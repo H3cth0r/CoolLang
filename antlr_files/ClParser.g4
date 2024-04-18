@@ -17,11 +17,13 @@ methodDeclarationClass: type nameDeclaration LPAR (argumentList)? RPAR LBRACE (c
 initializerDeclaration: nameDeclaration LPAR (argumentList)? RPAR LBRACE (classStatement)* RBRACE;
 
 argumentList: argument (COMMA argument)*;
+instantiationArgumentList: argumentInstantiation (COMMA argumentInstantiation)*;
+argumentInstantiation: nameDeclaration | expression;
 
 argument: type nameDeclaration;
 
 
-main: MAIN LBRACE statement RBRACE;
+main: MAIN LBRACE statement* RBRACE;
 
 classStatement: classReturnStatement
                 | statement SEMI
@@ -33,13 +35,13 @@ returnExpression: RETURN expression SEMI;
 selfStatement: SELF assignment SEMI;
 
 statement: assignment SEMI
-         | classInstantiation SEMI
          | type assignment SEMI 
          | ifStatement
          | whileStatement
          | forStatement
          | methodCall SEMI
          | objectAttribute SEMI
+         | classInstantiation SEMI
          | returnStatement SEMI;
 
 objectAttribute: nameDeclaration POINT nameDeclaration EQUAL expression;
@@ -51,7 +53,7 @@ whileStatement: WHILE LPAR expression RPAR LBRACE statement* RBRACE;
 
 forStatement: FOR LPAR assignment SEMI expression SEMI assignment RPAR LBRACE statement* RBRACE;
 
-classInstantiation: nameDeclaration UNDERSCORE nameDeclaration EQUAL nameDeclaration LPAR (argumentList)? RPAR;
+classInstantiation: INSTANCE nameDeclaration HASH nameDeclaration EQUAL nameDeclaration LPAR (instantiationArgumentList)? RPAR;
 
 methodCall: (nameDeclaration POINT)? nameDeclaration LPAR (argumentList)? RPAR;
 

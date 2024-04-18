@@ -11,6 +11,7 @@ ELSE:   'else';
 WHILE:  'while';
 FOR:    'for';
 
+INSTANCE:'instance';
 CLASS:  'class';
 STRUCT: 'struct';
 SELF:   '->';
@@ -32,7 +33,7 @@ RBRACE: '}';
 LPAR:   '(';
 RPAR:   ')';
 POINT:  '.';
-UNDERSCORE: '#';
+HASH: '#';
 
 INT:    'integer';
 FLOAT:  'float';

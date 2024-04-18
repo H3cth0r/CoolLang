@@ -23,5 +23,5 @@ class Person {
 
 main{
   string nameOne = "hector";
-  person#personn = Person("h3cth0r", nameOne, 34, "micontra");  
+  instance person#personn = person("h3cth0r", nameOne, 34, "micontra");  
 }
