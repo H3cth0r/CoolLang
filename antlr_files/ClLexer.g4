@@ -19,7 +19,7 @@ RETURN: '<-';
 
 PLUS:   '+';
 MINUS:  '-';
-BY:     '*';
+STAR:   '*';
 DIV:    '/';
 MOD:    '%';
 EQUAL:  '=';
@@ -35,7 +35,7 @@ POINT:  '.';
 
 INT:    'int';
 FLOAT:  'float';
-STRING: 'str';
+STRING: 'string';
 BOOL:   'bool';
 
 TRUE:   'true';

@@ -14,7 +14,7 @@ class Person {
     <- ->name;
   }
   float squaredAge(){
-    <- ->age * ->age*2;
+    <- ->age * ->age;
   }
   float ageByTwo(){
     <- 2 * ->age;
