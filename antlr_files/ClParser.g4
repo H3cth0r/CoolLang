@@ -4,23 +4,22 @@ options {
   tokenVocab = ClLexer;
 }
 
-program: (classDeclaration | structDeclaration)* main;
+program: (classDeclaration)* main;
 
-classDeclaration: CLASS NONDIGIT NONDIGIT* LBRACE (fieldDeclaration | methodDeclarationClass | initializerDeclaration)* RBRACE;
+classDeclaration: CLASS nameDeclaration LBRACE (fieldDeclaration | methodDeclarationClass | initializerDeclaration)* RBRACE;
 
-fieldDeclaration: (PLUS | MINUS) (MUTABLE | INMUTABLE)? type NONDIGIT NONDIGIT* (EQUAL expression)? SEMI;
+fieldDeclaration: (PLUS | MINUS) (MUTABLE | INMUTABLE)? type nameDeclaration (EQUAL expression)? SEMI;
 
-methodDeclaration: type NONDIGIT NONDIGIT* LPAR (argumentList)? RPAR LBRACE statement* RBRACE ;
+methodDeclaration: type nameDeclaration LPAR (argumentList)? RPAR LBRACE statement* RBRACE ;
 
-methodDeclarationClass: type NONDIGIT NONDIGIT* LPAR (argumentList)? RPAR LBRACE (classStatement)* RBRACE ;
+methodDeclarationClass: type nameDeclaration LPAR (argumentList)? RPAR LBRACE (classStatement)* RBRACE ;
 
-initializerDeclaration: NONDIGIT NONDIGIT* LPAR (argumentList)? RPAR LBRACE (classStatement)* RBRACE;
+initializerDeclaration: nameDeclaration LPAR (argumentList)? RPAR LBRACE (classStatement)* RBRACE;
 
 argumentList: argument (COMMA argument)*;
 
-argument: type NONDIGIT NONDIGIT*;
+argument: type nameDeclaration;
 
-structDeclaration: STRUCT NONDIGIT NONDIGIT* LBRACE (fieldDeclaration)* RBRACE;
 
 main: MAIN LBRACE statement RBRACE;
 
@@ -34,14 +33,17 @@ returnExpression: RETURN expression SEMI;
 selfStatement: SELF assignment SEMI;
 
 statement: assignment SEMI
+         | classInstantiation SEMI
+         | type assignment SEMI 
          | ifStatement
          | whileStatement
          | forStatement
-         | classInstantiation SEMI
          | methodCall SEMI
+         | objectAttribute SEMI
          | returnStatement SEMI;
 
-assignment: NONDIGIT NONDIGIT* EQUAL expression; // Added SEMI here
+objectAttribute: nameDeclaration POINT nameDeclaration EQUAL expression;
+assignment: nameDeclaration EQUAL expression;
 
 ifStatement: IF LPAR expression RPAR LBRACE statement RBRACE (ELIF LPAR expression RPAR LBRACE statement* RBRACE)* (ELSE LBRACE statement* RBRACE)?;
 
@@ -49,9 +51,9 @@ whileStatement: WHILE LPAR expression RPAR LBRACE statement* RBRACE;
 
 forStatement: FOR LPAR assignment SEMI expression SEMI assignment RPAR LBRACE statement* RBRACE;
 
-classInstantiation: NONDIGIT NONDIGIT* EQUAL NONDIGIT NONDIGIT* LPAR (argumentList)? RPAR LBRACE fieldDeclaration* RBRACE;
+classInstantiation: nameDeclaration UNDERSCORE nameDeclaration EQUAL nameDeclaration LPAR (argumentList)? RPAR;
 
-methodCall: (NONDIGIT NONDIGIT* POINT)? NONDIGIT NONDIGIT* LPAR (argumentList)? RPAR;
+methodCall: (nameDeclaration POINT)? nameDeclaration LPAR (argumentList)? RPAR;
 
 classReturnStatement: (returnStatement | RETURN classExpression) SEMI;
 
@@ -59,14 +61,14 @@ returnStatement: RETURN expression SEMI;
 
 classExpression: expression | selfClassCall;
 
-selfClassCall: SELF NONDIGIT NONDIGIT*;
+selfClassCall: SELF nameDeclaration;
 
 expression: SELF callExpression  // Access member using SELF
           | callExpression;
 
-callExpression: NONDIGIT NONDIGIT*   // Handles method calls and member access
+callExpression: nameDeclaration   // Handles method calls and member access
                 (POINT callExpression)?
-                | (SELF NONDIGIT NONDIGIT*)?  // Added this line for member access with SELF
+                | (SELF nameDeclaration)?  // Added this line for member access with SELF
                 | integer_expr
                 | floating_expr
                 | string_expr
@@ -87,3 +89,5 @@ floating_expr: (DIGIT+ POINT DIGIT* | DIGIT* POINT DIGIT+ | DIGIT+ EXPONENT (PLU
 string_expr: STRINGLITERAL;
 
 type: INT | FLOAT | STRING | BOOL;
+
+nameDeclaration: NONDIGIT NONDIGIT*;

@@ -4,7 +4,7 @@ class Person {
   + float age = 23.1;
   - string password;
   
-  Person(string username, int name, float age, string password){
+  Person(string username, string name, float age, string password){
     ->username = username;
     ->name = name;
     ->age = age;
@@ -20,19 +20,8 @@ class Person {
     <- 2 * ->age;
   }
 }
-struct Point{
-  int id=1;
-  float x;
-  float y;
-  float z;
-}
 
 main{
-  Point p = Point{
-    x = 43.3;
-    y = 3.2;
-    z = 1;
-  }; 
-  p.id = 3;
-  
+  string nameOne = "hector";
+  person#personn = Person("h3cth0r", nameOne, 34, "micontra");  
 }

@@ -32,8 +32,9 @@ RBRACE: '}';
 LPAR:   '(';
 RPAR:   ')';
 POINT:  '.';
+UNDERSCORE: '#';
 
-INT:    'int';
+INT:    'integer';
 FLOAT:  'float';
 STRING: 'string';
 BOOL:   'bool';
