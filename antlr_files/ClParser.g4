@@ -4,7 +4,7 @@ options {
   tokenVocab = ClLexer;
 }
 
-program: (classDeclaration)* main;
+program: (classDeclaration | methodDeclaration)* main;
 
 classDeclaration: CLASS nameDeclaration LBRACE (fieldDeclaration | methodDeclarationClass | initializerDeclaration)* RBRACE;
 
@@ -47,13 +47,13 @@ statement: assignment SEMI
 objectAttribute: nameDeclaration POINT nameDeclaration EQUAL expression;
 assignment: nameDeclaration EQUAL expression;
 
-ifStatement: IF LPAR expression RPAR LBRACE statement RBRACE (ELIF LPAR expression RPAR LBRACE statement* RBRACE)* (ELSE LBRACE (statement | classReturnStatement | selfStatement)* RBRACE)?;
+ifStatement: IF LPAR expression RPAR LBRACE (statement | classReturnStatement | selfStatement)* RBRACE (ELIF LPAR expression RPAR LBRACE (statement | classReturnStatement | selfStatement)* RBRACE)* (ELSE LBRACE (statement | classReturnStatement | selfStatement)* RBRACE)?;
 whileStatement: WHILE LPAR expression RPAR LBRACE (statement | classReturnStatement | selfStatement)* RBRACE;
 forStatement: FOR LPAR assignment SEMI expression SEMI assignment RPAR LBRACE (statement | classReturnStatement | selfStatement)* RBRACE;
 
 classInstantiation: INSTANCE nameDeclaration HASH nameDeclaration EQUAL nameDeclaration LPAR (instantiationArgumentList)? RPAR;
 
-methodCall: (nameDeclaration POINT)? nameDeclaration LPAR (argumentList)? RPAR;
+methodCall: (nameDeclaration POINT)? nameDeclaration LPAR (instantiationArgumentList)? RPAR;
 
 classReturnStatement: (returnStatement | RETURN classExpression) SEMI;
 
@@ -86,7 +86,10 @@ callExpression: nameDeclaration   // Handles method calls and member access
                 | callExpression GREATEREQUAL callExpression
                 | callExpression SMALLEREQUAL callExpression
                 | LPAR callExpression RPAR
+                | classCallSelf 
                 | methodCall;
+
+classCallSelf:  nameDeclaration SELF (nameDeclaration | methodCall);
 
 integer_expr: (DIGIT+ | MINUS DIGIT+);
 

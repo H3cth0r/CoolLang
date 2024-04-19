@@ -7,6 +7,11 @@ class Person {
   Person(string username, string name, float age, string password){
     ->username = username;
     ->name = name;
+
+    for(i = 0; i>5; i = i + 1){
+      ->name = ->name + 1; 
+    }
+
     ->age = age;
     ->password = password;
   }
@@ -28,9 +33,16 @@ class Person {
   }
 }
 
+integer sumNumber(integer one, integer two) {
+  integer sum = one + two;
+  <- sum;
+}
+
 main{
   string nameOne = "hector";
   instance person#personn = person("h3cth0r", nameOne, 34, "micontra");  
+  string nameTwo = personn->name;
+  float agetbtwo = personn->ageByTwo();
   integer digit = 1;
   for(i = 0; i>5; i = i + 1){
     digit = digit + 1; 
@@ -41,6 +53,10 @@ main{
     result_sum = result_sum + some_char;
     if(i==11){
       i = i + 1;
+      for(j = 0; j>5; j = j + 1){
+        digit = digit + 1; 
+      }
     }
   }
+  integer result = sumNumber(1, 2);
 }
