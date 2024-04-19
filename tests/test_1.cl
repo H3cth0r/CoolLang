@@ -11,9 +11,16 @@ class Person {
     ->password = password;
   }
   string getName(){
-    <- ->name;
+    if(->name == "jorge"){
+      <- "george";
+    }else{
+      <- ->name;
+    }
   }
   float squaredAge(){
+    while(age < 10){
+      ->age = ->age + 1;
+    }
     <- ->age * ->age;
   }
   float ageByTwo(){
@@ -32,5 +39,8 @@ main{
   while(i < 10){
     string some_char = m;
     result_sum = result_sum + some_char;
+    if(i==11){
+      i = i + 1;
+    }
   }
 }

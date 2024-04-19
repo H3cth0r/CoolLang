@@ -26,7 +26,7 @@ argument: type nameDeclaration;
 main: MAIN LBRACE statement* RBRACE;
 
 classStatement: classReturnStatement
-                | statement SEMI
+                | statement 
                 | selfStatement
                 | returnExpression SEMI;
 
@@ -47,11 +47,9 @@ statement: assignment SEMI
 objectAttribute: nameDeclaration POINT nameDeclaration EQUAL expression;
 assignment: nameDeclaration EQUAL expression;
 
-ifStatement: IF LPAR expression RPAR LBRACE statement RBRACE (ELIF LPAR expression RPAR LBRACE statement* RBRACE)* (ELSE LBRACE statement* RBRACE)?;
-
-whileStatement: WHILE LPAR expression RPAR LBRACE statement* RBRACE;
-
-forStatement: FOR LPAR assignment SEMI expression SEMI assignment RPAR LBRACE statement* RBRACE;
+ifStatement: IF LPAR expression RPAR LBRACE statement RBRACE (ELIF LPAR expression RPAR LBRACE statement* RBRACE)* (ELSE LBRACE (statement | classReturnStatement | selfStatement)* RBRACE)?;
+whileStatement: WHILE LPAR expression RPAR LBRACE (statement | classReturnStatement | selfStatement)* RBRACE;
+forStatement: FOR LPAR assignment SEMI expression SEMI assignment RPAR LBRACE (statement | classReturnStatement | selfStatement)* RBRACE;
 
 classInstantiation: INSTANCE nameDeclaration HASH nameDeclaration EQUAL nameDeclaration LPAR (instantiationArgumentList)? RPAR;
 
@@ -59,7 +57,7 @@ methodCall: (nameDeclaration POINT)? nameDeclaration LPAR (argumentList)? RPAR;
 
 classReturnStatement: (returnStatement | RETURN classExpression) SEMI;
 
-returnStatement: RETURN expression SEMI;
+returnStatement: RETURN expression;
 
 classExpression: expression | selfClassCall;
 
