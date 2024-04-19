@@ -81,6 +81,12 @@ callExpression: nameDeclaration   // Handles method calls and member access
                 | callExpression STAR callExpression
                 | callExpression DIV callExpression
                 | callExpression MOD callExpression
+                | callExpression EQEQUAL callExpression
+                | callExpression NOTEQUAL callExpression
+                | callExpression GREATER callExpression
+                | callExpression SMALLER callExpression
+                | callExpression GREATEREQUAL callExpression
+                | callExpression SMALLEREQUAL callExpression
                 | LPAR callExpression RPAR
                 | methodCall;
 

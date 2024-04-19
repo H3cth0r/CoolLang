@@ -33,7 +33,7 @@ RBRACE: '}';
 LPAR:   '(';
 RPAR:   ')';
 POINT:  '.';
-HASH: '#';
+HASH:   '#';
 
 INT:    'integer';
 FLOAT:  'float';
@@ -45,6 +45,10 @@ FALSE:  'false';
 
 EQEQUAL:'==';
 NOTEQUAL:'!=';
+GREATER:'>';
+SMALLER:'<';
+GREATEREQUAL:'>=';
+SMALLEREQUAL:'<=';
 
 MUTABLE:'mutable';
 INMUTABLE:'inmutable';
