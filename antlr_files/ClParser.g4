@@ -6,15 +6,15 @@ options {
 
 program: (classDeclaration | methodDeclaration)* main;
 
-classDeclaration: CLASS nameDeclaration LBRACE (fieldDeclaration | methodDeclarationClass | initializerDeclaration)* RBRACE;
+classDeclaration: CLASS nameDeclaration lbrace (fieldDeclaration | methodDeclarationClass | initializerDeclaration)* rbrace;
 
-fieldDeclaration: (PLUS | MINUS) (MUTABLE | INMUTABLE)? type nameDeclaration (EQUAL expression)? SEMI;
+fieldDeclaration: (PLUS | MINUS) (MUTABLE | INMUTABLE)? type nameDeclaration (equal expression)? semi;
 
-methodDeclaration: type nameDeclaration LPAR (argumentList)? RPAR LBRACE statement* RBRACE ;
+methodDeclaration: type nameDeclaration lpar (argumentList)? rpar lbrace statement* rbrace ;
 
-methodDeclarationClass: type nameDeclaration LPAR (argumentList)? RPAR LBRACE (classStatement)* RBRACE ;
+methodDeclarationClass: type nameDeclaration lpar (argumentList)? rpar lbrace (classStatement)* rbrace ;
 
-initializerDeclaration: nameDeclaration LPAR (argumentList)? RPAR LBRACE (classStatement)* RBRACE;
+initializerDeclaration: nameDeclaration lpar (argumentList)? rpar lbrace (classStatement)* rbrace;
 
 argumentList: argument (COMMA argument)*;
 instantiationArgumentList: argumentInstantiation (COMMA argumentInstantiation)*;
@@ -23,41 +23,41 @@ argumentInstantiation: nameDeclaration | expression;
 argument: type nameDeclaration;
 
 
-main: MAIN LBRACE statement* RBRACE;
+main: MAIN lbrace statement* rbrace;
 
 classStatement: classReturnStatement
                 | statement 
                 | selfStatement
-                | returnExpression SEMI;
+                | returnExpression semi;
 
-returnExpression: RETURN expression SEMI;
+returnExpression: RETURN expression semi;
 
-selfStatement: SELF assignment SEMI;
+selfStatement: SELF assignment semi;
 
-statement: assignment SEMI
-         | type assignment SEMI 
+statement: assignment semi
+         | type assignment semi 
          | ifStatement
          | whileStatement
          | forStatement
-         | printStatement SEMI
-         | methodCall SEMI
-         | objectAttribute SEMI
-         | classInstantiation SEMI
-         | returnStatement SEMI;
+         | printStatement semi 
+         | methodCall semi
+         | objectAttribute semi
+         | classInstantiation semi
+         | returnStatement semi;
 
-printStatement: PRINT LPAR expression RPAR;
-objectAttribute: nameDeclaration POINT nameDeclaration EQUAL expression;
-assignment: nameDeclaration EQUAL expression;
+printStatement: PRINT lpar expression rpar;
+objectAttribute: nameDeclaration POINT nameDeclaration equal expression;
+assignment: nameDeclaration equal expression;
 
-ifStatement: IF LPAR expression RPAR LBRACE (statement | classReturnStatement | selfStatement)* RBRACE (ELIF LPAR expression RPAR LBRACE (statement | classReturnStatement | selfStatement)* RBRACE)* (ELSE LBRACE (statement | classReturnStatement | selfStatement)* RBRACE)?;
-whileStatement: WHILE LPAR expression RPAR LBRACE (statement | classReturnStatement | selfStatement)* RBRACE;
-forStatement: FOR LPAR assignment SEMI expression SEMI assignment RPAR LBRACE (statement | classReturnStatement | selfStatement)* RBRACE;
+ifStatement: IF lpar expression rpar lbrace (statement | classReturnStatement | selfStatement)* rbrace (ELIF lpar expression rpar lbrace (statement | classReturnStatement | selfStatement)* rbrace)* (ELSE lbrace (statement | classReturnStatement | selfStatement)* rbrace)?;
+whileStatement: WHILE lpar expression rpar lbrace (statement | classReturnStatement | selfStatement)* rbrace;
+forStatement: FOR lpar assignment semi expression semi assignment rpar lbrace (statement | classReturnStatement | selfStatement)* rbrace;
 
-classInstantiation: INSTANCE nameDeclaration HASH nameDeclaration EQUAL nameDeclaration LPAR (instantiationArgumentList)? RPAR;
+classInstantiation: INSTANCE nameDeclaration HASH nameDeclaration equal nameDeclaration lpar (instantiationArgumentList)? rpar;
 
-methodCall: (nameDeclaration POINT)? nameDeclaration LPAR (instantiationArgumentList)? RPAR;
+methodCall: (nameDeclaration POINT)? nameDeclaration lpar (instantiationArgumentList)? rpar;
 
-classReturnStatement: (returnStatement | RETURN classExpression) SEMI;
+classReturnStatement: (returnStatement | RETURN classExpression) semi;
 
 returnStatement: RETURN expression;
 
@@ -87,7 +87,7 @@ callExpression: nameDeclaration   // Handles method calls and member access
                 | callExpression SMALLER callExpression
                 | callExpression GREATEREQUAL callExpression
                 | callExpression SMALLEREQUAL callExpression
-                | LPAR callExpression RPAR
+                | lpar callExpression rpar 
                 | classCallSelf 
                 | methodCall;
 
@@ -100,5 +100,13 @@ floating_expr: (DIGIT+ POINT DIGIT* | DIGIT* POINT DIGIT+ | DIGIT+ EXPONENT (PLU
 string_expr: STRINGLITERAL;
 
 type: INT | FLOAT | STRING | BOOL;
+
+lpar: LPAR;
+rpar: RPAR;
+lbrace: LBRACE;
+rbrace: RBRACE;
+semi: SEMI;
+
+equal: EQUAL;
 
 nameDeclaration: NONDIGIT NONDIGIT*;

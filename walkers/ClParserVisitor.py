@@ -179,6 +179,36 @@ class ClParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ClParser#lpar.
+    def visitLpar(self, ctx:ClParser.LparContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ClParser#rpar.
+    def visitRpar(self, ctx:ClParser.RparContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ClParser#lbrace.
+    def visitLbrace(self, ctx:ClParser.LbraceContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ClParser#rbrace.
+    def visitRbrace(self, ctx:ClParser.RbraceContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ClParser#semi.
+    def visitSemi(self, ctx:ClParser.SemiContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ClParser#equal.
+    def visitEqual(self, ctx:ClParser.EqualContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ClParser#nameDeclaration.
     def visitNameDeclaration(self, ctx:ClParser.NameDeclarationContext):
         return self.visitChildren(ctx)

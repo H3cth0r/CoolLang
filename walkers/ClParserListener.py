@@ -314,6 +314,60 @@ class ClParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ClParser#lpar.
+    def enterLpar(self, ctx:ClParser.LparContext):
+        pass
+
+    # Exit a parse tree produced by ClParser#lpar.
+    def exitLpar(self, ctx:ClParser.LparContext):
+        pass
+
+
+    # Enter a parse tree produced by ClParser#rpar.
+    def enterRpar(self, ctx:ClParser.RparContext):
+        pass
+
+    # Exit a parse tree produced by ClParser#rpar.
+    def exitRpar(self, ctx:ClParser.RparContext):
+        pass
+
+
+    # Enter a parse tree produced by ClParser#lbrace.
+    def enterLbrace(self, ctx:ClParser.LbraceContext):
+        pass
+
+    # Exit a parse tree produced by ClParser#lbrace.
+    def exitLbrace(self, ctx:ClParser.LbraceContext):
+        pass
+
+
+    # Enter a parse tree produced by ClParser#rbrace.
+    def enterRbrace(self, ctx:ClParser.RbraceContext):
+        pass
+
+    # Exit a parse tree produced by ClParser#rbrace.
+    def exitRbrace(self, ctx:ClParser.RbraceContext):
+        pass
+
+
+    # Enter a parse tree produced by ClParser#semi.
+    def enterSemi(self, ctx:ClParser.SemiContext):
+        pass
+
+    # Exit a parse tree produced by ClParser#semi.
+    def exitSemi(self, ctx:ClParser.SemiContext):
+        pass
+
+
+    # Enter a parse tree produced by ClParser#equal.
+    def enterEqual(self, ctx:ClParser.EqualContext):
+        pass
+
+    # Exit a parse tree produced by ClParser#equal.
+    def exitEqual(self, ctx:ClParser.EqualContext):
+        pass
+
+
     # Enter a parse tree produced by ClParser#nameDeclaration.
     def enterNameDeclaration(self, ctx:ClParser.NameDeclarationContext):
         pass
