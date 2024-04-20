@@ -39,11 +39,13 @@ statement: assignment SEMI
          | ifStatement
          | whileStatement
          | forStatement
+         | printStatement SEMI
          | methodCall SEMI
          | objectAttribute SEMI
          | classInstantiation SEMI
          | returnStatement SEMI;
 
+printStatement: PRINT LPAR expression RPAR;
 objectAttribute: nameDeclaration POINT nameDeclaration EQUAL expression;
 assignment: nameDeclaration EQUAL expression;
 

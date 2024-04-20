@@ -1,9 +1,3 @@
-# sha256 = "vBOpxXqN19UZaIghHl7eZXy2SjzpaGCGl+T2aCUahIc=";
-
-
-
-# sha256 = "vBOpxXqN19UZaIghHl7eZXy2SjzpaGCGl+T2aCUahIc=";
-
 with import <nixpkgs> {};
 
 let

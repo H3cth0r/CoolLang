@@ -43,6 +43,8 @@ BOOL:   'bool';
 TRUE:   'true';
 FALSE:  'false';
 
+PRINT:  'print';
+
 EQEQUAL:'==';
 NOTEQUAL:'!=';
 GREATER:'>';
