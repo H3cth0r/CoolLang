@@ -10,11 +10,10 @@ classDeclaration: CLASS nameDeclaration lbrace (fieldDeclaration | methodDeclara
 
 fieldDeclaration: type nameDeclaration (equal expression)? semi;
 
-methodDeclaration: type nameDeclaration lpar (argumentList)? rpar lbrace statement* rbrace ;
-
-methodDeclarationClass: type nameDeclaration lpar (argumentList)? rpar lbrace (classStatement)* rbrace ;
-
-initializerDeclaration: nameDeclaration lpar (argumentList)? rpar lbrace (classStatement)* rbrace;
+methodDeclaration: type nameDeclaration lpar (argumentList)? methodDeclarationClose statement* rbrace ;
+methodDeclarationClass: type nameDeclaration lpar (argumentList)? methodDeclarationClose (classStatement)* rbrace ;
+initializerDeclaration: nameDeclaration lpar (argumentList)? methodDeclarationClose (classStatement)* rbrace;
+methodDeclarationClose: rpar lbrace;
 
 argumentList: argument (COMMA argument)*;
 instantiationArgumentList: argumentInstantiation (COMMA argumentInstantiation)*;

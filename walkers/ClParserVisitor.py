@@ -39,6 +39,11 @@ class ClParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ClParser#methodDeclarationClose.
+    def visitMethodDeclarationClose(self, ctx:ClParser.MethodDeclarationCloseContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ClParser#argumentList.
     def visitArgumentList(self, ctx:ClParser.ArgumentListContext):
         return self.visitChildren(ctx)

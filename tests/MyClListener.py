@@ -38,6 +38,46 @@ class MyClListener(ClParserListener):
     def exitMain(self, ctx):
         self.new_program += "return 0;\n}\n"
 
+
+    # Class Initializer handling
+    def enterInitializerDeclaration(self, ctx):
+        class_name = ctx.getChild(0).getText()
+        self.new_program += class_name + "("
+    def exitInitializerDeclaration(self, ctx):
+        self.new_program += "\n}\n"
+
+    # Method class declaration handling
+    def enterMethodDeclarationClass(self, ctx):
+        return_type = ctx.getChild(0).getText()
+        if return_type == "integer":return_type = "int"
+        method_name = ctx.getChild(1).getText()
+        self.new_program += return_type + " " + method_name + "("
+    def enterArgumentList(self, ctx):
+        childs_len = ctx.getChildCount()
+        args = ""
+        for i in range(childs_len):
+            child = ctx.getChild(i)
+            if "argument" in type(child).__name__.lower():
+                _type = child.getChild(0).getText()
+                if _type == "integer": _type = "int"
+                name=child.getChild(1).getText()
+                args += _type + " " + name
+            else:
+                args += ", "
+        self.new_program += args 
+    def enterMethodDeclarationClose(self, ctx):
+        self.new_program += "){\n"
+    def exitMethodDeclarationClass(self, ctx):
+        self.new_program += "\n}-\n"
+
+    # Method Declaration handling
+    def enterMethodDeclaration(self, ctx):
+        return_type = ctx.getChild(0).getText()
+        if return_type == "integer":return_type = "int"
+        method_name = ctx.getChild(1).getText()
+        self.new_program += return_type + " " + method_name + "("
+    def exitMethodDeclaration(self, ctx):
+        self.new_program += "\n}--\n"
     
     # While Statements handling
     def enterWhileStatement(self, ctx):

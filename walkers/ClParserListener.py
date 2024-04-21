@@ -62,6 +62,15 @@ class ClParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ClParser#methodDeclarationClose.
+    def enterMethodDeclarationClose(self, ctx:ClParser.MethodDeclarationCloseContext):
+        pass
+
+    # Exit a parse tree produced by ClParser#methodDeclarationClose.
+    def exitMethodDeclarationClose(self, ctx:ClParser.MethodDeclarationCloseContext):
+        pass
+
+
     # Enter a parse tree produced by ClParser#argumentList.
     def enterArgumentList(self, ctx:ClParser.ArgumentListContext):
         pass
