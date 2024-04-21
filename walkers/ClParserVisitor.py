@@ -84,6 +84,11 @@ class ClParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ClParser#declaration.
+    def visitDeclaration(self, ctx:ClParser.DeclarationContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ClParser#printStatement.
     def visitPrintStatement(self, ctx:ClParser.PrintStatementContext):
         return self.visitChildren(ctx)
@@ -104,13 +109,48 @@ class ClParserVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ClParser#ifOption.
+    def visitIfOption(self, ctx:ClParser.IfOptionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ClParser#elifOption.
+    def visitElifOption(self, ctx:ClParser.ElifOptionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ClParser#elseOption.
+    def visitElseOption(self, ctx:ClParser.ElseOptionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ClParser#ifEvaluation.
+    def visitIfEvaluation(self, ctx:ClParser.IfEvaluationContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ClParser#whileStatement.
     def visitWhileStatement(self, ctx:ClParser.WhileStatementContext):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ClParser#whileExpression.
+    def visitWhileExpression(self, ctx:ClParser.WhileExpressionContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ClParser#forStatement.
     def visitForStatement(self, ctx:ClParser.ForStatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ClParser#forExpression.
+    def visitForExpression(self, ctx:ClParser.ForExpressionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ClParser#loopStatements.
+    def visitLoopStatements(self, ctx:ClParser.LoopStatementsContext):
         return self.visitChildren(ctx)
 
 

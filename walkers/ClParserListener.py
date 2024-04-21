@@ -143,6 +143,15 @@ class ClParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ClParser#declaration.
+    def enterDeclaration(self, ctx:ClParser.DeclarationContext):
+        pass
+
+    # Exit a parse tree produced by ClParser#declaration.
+    def exitDeclaration(self, ctx:ClParser.DeclarationContext):
+        pass
+
+
     # Enter a parse tree produced by ClParser#printStatement.
     def enterPrintStatement(self, ctx:ClParser.PrintStatementContext):
         pass
@@ -179,6 +188,42 @@ class ClParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ClParser#ifOption.
+    def enterIfOption(self, ctx:ClParser.IfOptionContext):
+        pass
+
+    # Exit a parse tree produced by ClParser#ifOption.
+    def exitIfOption(self, ctx:ClParser.IfOptionContext):
+        pass
+
+
+    # Enter a parse tree produced by ClParser#elifOption.
+    def enterElifOption(self, ctx:ClParser.ElifOptionContext):
+        pass
+
+    # Exit a parse tree produced by ClParser#elifOption.
+    def exitElifOption(self, ctx:ClParser.ElifOptionContext):
+        pass
+
+
+    # Enter a parse tree produced by ClParser#elseOption.
+    def enterElseOption(self, ctx:ClParser.ElseOptionContext):
+        pass
+
+    # Exit a parse tree produced by ClParser#elseOption.
+    def exitElseOption(self, ctx:ClParser.ElseOptionContext):
+        pass
+
+
+    # Enter a parse tree produced by ClParser#ifEvaluation.
+    def enterIfEvaluation(self, ctx:ClParser.IfEvaluationContext):
+        pass
+
+    # Exit a parse tree produced by ClParser#ifEvaluation.
+    def exitIfEvaluation(self, ctx:ClParser.IfEvaluationContext):
+        pass
+
+
     # Enter a parse tree produced by ClParser#whileStatement.
     def enterWhileStatement(self, ctx:ClParser.WhileStatementContext):
         pass
@@ -188,12 +233,39 @@ class ClParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ClParser#whileExpression.
+    def enterWhileExpression(self, ctx:ClParser.WhileExpressionContext):
+        pass
+
+    # Exit a parse tree produced by ClParser#whileExpression.
+    def exitWhileExpression(self, ctx:ClParser.WhileExpressionContext):
+        pass
+
+
     # Enter a parse tree produced by ClParser#forStatement.
     def enterForStatement(self, ctx:ClParser.ForStatementContext):
         pass
 
     # Exit a parse tree produced by ClParser#forStatement.
     def exitForStatement(self, ctx:ClParser.ForStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by ClParser#forExpression.
+    def enterForExpression(self, ctx:ClParser.ForExpressionContext):
+        pass
+
+    # Exit a parse tree produced by ClParser#forExpression.
+    def exitForExpression(self, ctx:ClParser.ForExpressionContext):
+        pass
+
+
+    # Enter a parse tree produced by ClParser#loopStatements.
+    def enterLoopStatements(self, ctx:ClParser.LoopStatementsContext):
+        pass
+
+    # Exit a parse tree produced by ClParser#loopStatements.
+    def exitLoopStatements(self, ctx:ClParser.LoopStatementsContext):
         pass
 
 

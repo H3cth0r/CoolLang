@@ -8,7 +8,7 @@ program: (classDeclaration | methodDeclaration)* main;
 
 classDeclaration: CLASS nameDeclaration lbrace (fieldDeclaration | methodDeclarationClass | initializerDeclaration)* rbrace;
 
-fieldDeclaration: (PLUS | MINUS) (MUTABLE | INMUTABLE)? type nameDeclaration (equal expression)? semi;
+fieldDeclaration: type nameDeclaration (equal expression)? semi;
 
 methodDeclaration: type nameDeclaration lpar (argumentList)? rpar lbrace statement* rbrace ;
 
@@ -35,7 +35,7 @@ returnExpression: RETURN expression semi;
 selfStatement: SELF assignment semi;
 
 statement: assignment semi
-         | type assignment semi 
+         | declaration semi 
          | ifStatement
          | whileStatement
          | forStatement
@@ -45,13 +45,24 @@ statement: assignment semi
          | classInstantiation semi
          | returnStatement semi;
 
+declaration: type assignment;
+
 printStatement: PRINT lpar expression rpar;
 objectAttribute: nameDeclaration POINT nameDeclaration equal expression;
 assignment: nameDeclaration equal expression;
 
-ifStatement: IF lpar expression rpar lbrace (statement | classReturnStatement | selfStatement)* rbrace (ELIF lpar expression rpar lbrace (statement | classReturnStatement | selfStatement)* rbrace)* (ELSE lbrace (statement | classReturnStatement | selfStatement)* rbrace)?;
-whileStatement: WHILE lpar expression rpar lbrace (statement | classReturnStatement | selfStatement)* rbrace;
-forStatement: FOR lpar assignment semi expression semi assignment rpar lbrace (statement | classReturnStatement | selfStatement)* rbrace;
+ifStatement: ifOption elifOption* elseOption?;
+ifOption: IF lpar ifEvaluation rpar lbrace loopStatements rbrace;
+elifOption: (ELIF lpar expression rpar lbrace loopStatements rbrace);
+elseOption: (ELSE lbrace loopStatements rbrace);
+ifEvaluation: expression;
+
+whileStatement: WHILE lpar whileExpression rpar lbrace loopStatements rbrace;
+whileExpression: expression;
+
+forStatement: FOR lpar forExpression rpar lbrace loopStatements rbrace;
+forExpression: declaration semi expression semi assignment;
+loopStatements: (statement | classReturnStatement | selfStatement)*;
 
 classInstantiation: INSTANCE nameDeclaration HASH nameDeclaration equal nameDeclaration lpar (instantiationArgumentList)? rpar;
 
@@ -64,6 +75,7 @@ returnStatement: RETURN expression;
 classExpression: expression | selfClassCall;
 
 selfClassCall: SELF nameDeclaration;
+
 
 expression: SELF callExpression  // Access member using SELF
           | callExpression;

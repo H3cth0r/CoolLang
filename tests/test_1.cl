@@ -1,15 +1,16 @@
 class Person {
-  + inmutable string username;
-  + string name;
-  + float age = 23.1;
-  - string password;
+  string username;
+  string name;
+  integer id = 2;
+  float age = 23.1;
+  string password;
   
   Person(string username, string name, float age, string password){
     ->username = username;
     ->name = name;
 
-    for(i = 0; i>5; i = i + 1){
-      ->name = ->name + 1; 
+    for(integer i = 0; i>5; i = i + 1){
+      ->name = ->name + "1"; 
     }
 
     ->age = age;
@@ -28,9 +29,9 @@ class Person {
     }
     <- ->age * ->age;
   }
-  float ageByTwo(){
+  float ageByTwo(integer number_one, float number_two){
     print(->age);
-    <- 2 * ->age;
+    <- number_one * ->age;
   }
 }
 
@@ -45,7 +46,7 @@ main{
   string nameTwo = personn->name;
   float agetbtwo = personn->ageByTwo();
   integer digit = 1;
-  for(i = 0; i>5; i = i + 1){
+  for(integer i = 0; i>5; i = i + 1){
     digit = digit + 1; 
     print(digit);
   }
@@ -55,7 +56,7 @@ main{
     result_sum = result_sum + some_char;
     if(i==11){
       i = i + 1;
-      for(j = 0; j>5; j = j + 1){
+      for(integer j = 0; j>5; j = j + 1){
         digit = digit + 1; 
       }
     }
