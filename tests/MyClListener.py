@@ -38,6 +38,32 @@ class MyClListener(ClParserListener):
     def exitMain(self, ctx):
         self.new_program += "return 0;\n}\n"
 
+    # TODO Check Check this
+    def enterExpression(self, ctx):
+        print(ctx.getChild(ctx.getChildCount()-1).getChildCount())
+        print(ctx.getChild(ctx.getChildCount()-1).getText())
+        print("="*40)
+        self.new_program += ctx.getText();
+    # Class Statement Handling
+    def enterClassReturnStatement(self, ctx):
+        self.new_program += ctx.getChild(0).getChild(0).getText()
+    def exitClassReturnStatement(self, ctx):
+        self.new_program += ";\n"
+ 
+    # Print handling
+    def enterPrintStatement(self, ctx):
+        self.new_program += "print("
+    def exitPrintStatement(self, ctx):
+        self.new_program += ");"
+
+    # field Declaration
+    def enterFieldDeclaration(self, ctx):
+        _type = ctx.getChild(0).getText()
+        if _type == "integer": _type = "int"
+        name = ctx.getChild(1).getText()
+        self.new_program += _type + " " + name
+    def exitFieldDeclaration(self, ctx):
+        self.new_program += ";\n"
 
     # Class Initializer handling
     def enterInitializerDeclaration(self, ctx):
@@ -113,6 +139,6 @@ class MyClListener(ClParserListener):
         assignment_two = ctx.getChild(4).getText()
         self.new_program += _type + " " + assignment + "; " + ctx.getChild(2).getText() + "; " + assignment_two
     def exitForExpression(self, ctx):
-        self.new_program += "){"
+        self.new_program += "){\n"
     def exitForStatement(self, ctx):
         self.new_program += "\n}\n"

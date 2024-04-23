@@ -30,7 +30,6 @@ classStatement: classReturnStatement
                 | returnExpression semi;
 
 returnExpression: RETURN expression semi;
-
 selfStatement: SELF assignment semi;
 
 statement: assignment semi
@@ -67,7 +66,7 @@ classInstantiation: INSTANCE nameDeclaration HASH nameDeclaration equal nameDecl
 
 methodCall: (nameDeclaration POINT)? nameDeclaration lpar (instantiationArgumentList)? rpar;
 
-classReturnStatement: (returnStatement | RETURN classExpression) semi;
+classReturnStatement: (returnStatement | (RETURN classExpression)) semi;
 
 returnStatement: RETURN expression;
 
