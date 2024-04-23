@@ -1,65 +1,25 @@
-class Person {
-  string username;
-  string name;
-  integer id = 2;
-  float age = 23.1;
-  string password;
-  
-  Person(string username, string name, float age, string password){
-    ->username = username;
-    ->name = name;
-
-    for(integer i = 0; i>5; i = i + 1){
-      ->name = ->name + "1"; 
-    }
-
-    ->age = age;
-    ->password = password;
+void printAgeByTwo(int age){
+  for(int i = 0; i < 10; i = i + 1){
+    age = age + 1;
+    age = age * 2;
   }
-  string getName(){
-    if(->name == "jorge"){
-      <- "george";
-    }else{
-      <- ->name;
-    }
-  }
-  float squaredAge(){
-    while(age < 10){
-      ->age = ->age + 1;
-    }
-    <- ->age * ->age;
-  }
-  float ageByTwo(integer number_one, float number_two){
-    print(->age);
-    <- number_one * ->age;
-  }
+  print(age*2); 
 }
-
-integer sumNumber(integer one, integer two) {
-  integer sum = one + two;
-  <- sum;
+int squareAge(int age){
+  int squaredAge = age * age;
+  return squaredAge;
 }
 
 main{
-  string nameOne = "hector";
-  instance person#personn = person("h3cth0r", nameOne, 34, "micontra");  
-  string nameTwo = personn->name;
-  float agetbtwo = personn->ageByTwo();
-  integer digit = 1;
-  for(integer i = 0; i>5; i = i + 1){
-    digit = digit + 1; 
-    print(digit);
+  int myAge = 19;
+  if(myAge > 16){
+    myAge = myAge + 2;
   }
-  string result_sum = "";
-  while(i < 10){
-    string some_char = m;
-    result_sum = result_sum + some_char;
-    if(i==11){
-      i = i + 1;
-      for(integer j = 0; j>5; j = j + 1){
-        digit = digit + 1; 
-      }
-    }
+  printAgeByTwo(myAge);
+  float iterator = 24.2;
+  while(iterator < 28){
+    printAgeByTwo(myAge);
+    iterator = iterator + 1;
   }
-  integer result = sumNumber(1, 2);
+  int squaredAge = squareAge(myAge);
 }
