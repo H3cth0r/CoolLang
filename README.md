@@ -1,5 +1,8 @@
 # Cool Lang
 
+![example tree](https://github.com/H3cth0r/CoolLang/blob/main/resources/test_2_tree.png?raw=true)
+
+
 ## Commands
 **Generate Nix Environment**
 ```sh
