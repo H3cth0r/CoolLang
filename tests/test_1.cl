@@ -5,8 +5,16 @@ void printAgeByTwo(int age){
   }
   print(age*2); 
 }
+void printAgesSum(int age_one, int age_two){
+  string perrito;
+  int summ = age_one + age_two;
+  return summ;
+}
 int squareAge(int age){
   int squaredAge = age * age;
+  if(age > 10){
+    print(age);
+  }
   return squaredAge;
 }
 
@@ -18,7 +26,12 @@ main{
   printAgeByTwo(myAge);
   float iterator = 24.2;
   while(iterator < 28){
-    printAgeByTwo(myAge);
+    if(iterator > 10){
+      string hello  = 'heloo';
+      print(hello);
+    }else {
+      printAgeByTwo(myAge);
+    }
     iterator = iterator + 1;
   }
   int squaredAge = squareAge(myAge);

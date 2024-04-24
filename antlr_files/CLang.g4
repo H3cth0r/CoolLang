@@ -2,7 +2,7 @@ grammar CLang;
 
 program       : method* main;
 
-statement     : (declaration | definition | print | call_function) ';'
+statement     : (declaration | definition | print | method_call) ';'
               ;
 print         : 'print' '(' arit_operation ')'
               ;
@@ -14,39 +14,39 @@ definition    : declaration '=' var_value
 var_value     : tk_int
               | tk_string
               | tk_float
-              | call_function
+              | method_call 
               | arit_operation 
               ;
-arit_operation: arit_operation '+'  arit_operation              # sum
-              | arit_operation '-' arit_operation               # substract
-              | arit_operation '^' arit_operation               # power
-              | arit_operation '/' arit_operation               # div
-              | arit_operation '*' arit_operation               # mul 
-              | var_expr                                        # var
-              | 'sqrt' '(' arit_operation ')'                   # sqrt
+arit_operation: arit_operation '+'  arit_operation              
+              | arit_operation '-' arit_operation               
+              | arit_operation '^' arit_operation               
+              | arit_operation '/' arit_operation               
+              | arit_operation '*' arit_operation               
+              | var_expr                                        
+              | 'sqrt' '(' arit_operation ')'                   
               ;
-call_function : tk_id '(' var_value (',' var_value)* ')'        # params
-              | tk_id '(' ')'                                   # no_params
+method_call : tk_id '(' var_value (',' var_value)* ')'          
+              | tk_id '(' ')'                                   
               ;
-bool_operation: bool_operation 'AND' bool_operation             # AND
-              | bool_operation 'OR' bool_operation              # OR
-              | bool_operation 'NOT' bool_operation             # NOT
-              | FALSE                                           # False
-              | TRUE                                            # True
-              | bool_compare                                    # bool_compare_op
+bool_operation: bool_operation 'AND' bool_operation             
+              | bool_operation 'OR' bool_operation              
+              | bool_operation 'NOT' bool_operation             
+              | FALSE                                           
+              | TRUE                                            
+              | bool_compare                                    
               ;
-bool_compare  : var_expr '==' var_expr                          # equal_to
-              | var_expr '!=' var_expr                          # not_equal_to
-              | var_expr '>=' var_expr                          # greater_than_or_equal_to
-              | var_expr '<=' var_expr                          # less_than_or_equal_to
-              | var_expr '>' var_expr                           # greater_than
-              | var_expr '<' var_expr                           # less_than
-              | '(' bool_compare ')'                            # enclosed_bool_compare 
+bool_compare  : var_expr '==' var_expr                          
+              | var_expr '!=' var_expr                          
+              | var_expr '>=' var_expr                          
+              | var_expr '<=' var_expr                          
+              | var_expr '>' var_expr                           
+              | var_expr '<' var_expr                           
+              | '(' bool_compare ')'                            
               ;
-var_expr      : tk_id                                           # var_name
-              | tk_int                                          # integer_expr
-              | tk_float                                        # float_expr
-              | tk_string                                       # string_expr
+var_expr      : tk_id                                           
+              | tk_int                                          
+              | tk_float                                        
+              | tk_string                                       
               ;
 
 body_statements : statement
