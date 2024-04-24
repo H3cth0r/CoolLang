@@ -1,3 +1,9 @@
+# sha256 = "vBOpxXqN19UZaIghHl7eZXy2SjzpaGCGl+T2aCUahIc=";
+
+
+
+# sha256 = "vBOpxXqN19UZaIghHl7eZXy2SjzpaGCGl+T2aCUahIc=";
+
 with import <nixpkgs> {};
 
 let
@@ -26,6 +32,7 @@ in
 mkShell {
   name = "antlr-python-env";
   buildInputs = [
+    zlib
     python
     antlr4Python
     openjdk
@@ -33,5 +40,10 @@ mkShell {
   shellHook = ''
     export CLASSPATH="$CLASSPATH:${antlr4Python}/lib/antlr-4.13.1-complete.jar"
     export PYTHONPATH="${python.pkgs.pybindgen}/lib/${python.pkgs.python.libPrefix}/site-packages:${antlr4Python}/${python.sitePackages}"
+    export LD_LIBRARY_PATH="${zlib}/lib"
+    export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath [
+          pkgs.stdenv.cc.cc
+          zlib
+    ]}
   '';
 }

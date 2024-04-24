@@ -21,20 +21,7 @@ javac *.java
 
 **Command to generate UI Tree**
 ```sh
-java org.antlr.v4.gui.TestRig Cl program --tree ../tests/test_1.cl  -gui
+cd ./antlr_files
+java org.antlr.v4.gui.TestRig CLang program --tree ../tests/test_1.cl  -gui
 java org.antlr.v4.gui.TestRig Cl program --tree ../tests/test_1.cl
-```
-
-**usefull**
-```py
-    def enterCallExpression(self, ctx):
-        print(ctx.getRuleContext())
-        print(ctx.getRuleIndex())
-        print(dir(ctx))
-        print(type(ctx).__name__)
-        print(ctx.toStringTree())
-        exit(0)
-        print(ctx.parentCtx.parentCtx.getText())
-        print("="*40)
-        self.new_program += ctx.getText()
 ```
