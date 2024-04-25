@@ -3,8 +3,24 @@ string makeGreeting(string name){
   return greeting;
 }
 
+string burrito(){
+  int numb = 10;
+  return numb;
+}
+
 main {
   string my_name = 'Thor';
   string greeting = makeGreeting(my_name);
+  burrito(carro);
   print(greeting);
+
+  float cocoa = 10 + 'olaaa';
+  string artifcact = cocoa;
+  while(oding != my_name){
+    print('something');
+  }
+
+  for(int cat = 0; cat < 20; cat = cat + 1){
+      print('John Snow');
+  }
 }
