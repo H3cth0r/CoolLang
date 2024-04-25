@@ -1,9 +1,23 @@
 # Cool Lang
 
+### Developed by
+- Hector Miranda Garcia
+- Victor Hugo Portilla Ortiz
+
 ![example tree](https://github.com/H3cth0r/CoolLang/blob/main/resources/test_2_tree.png?raw=true)
 
 
 ## Commands
+**run examples**
+- test: has no errors
+- test 2: has no errors
+- test 3: has errors
+```sh
+python main.py ./tests/test_1.txt
+python main.py ./tests/test_2.txt
+python main.py ./tests/test_3.txt
+```
+
 **Generate Nix Environment**
 ```sh
 nix-shell

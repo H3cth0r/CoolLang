@@ -1,0 +1,13 @@
+float calculateTip(float totalres, float percentageres){
+  float tip = total  * percentage;
+}
+
+main{
+  float price_lunch = 23.45;
+  float price_water = 345.3;
+  float total = 34.3;
+  float tip = calculateTip(total, percent);
+  print(tip);
+
+  printRecipe(total, tip);
+}
